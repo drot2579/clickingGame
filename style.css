@@ -4,41 +4,26 @@
     box-sizing: border-box;
     text-align: center;
     vertical-align: middle;
-
 }
-
 html {
     --green1: hsl(90, 100%, 50%);
-    --greenBlue1: hsl(150, 100%, 50%);
-    --purple1: hsl(270, 100%, 50%);
-    --pink1: hsl(330, 100%, 50%);
-
     --orange1: hsl(30, 100%, 50%);
     --blue1: hsl(210, 100%, 50%);
-    --grey1: hsl(0, 0%, 20%);
-
+    --orangeDarker: hsl(17, 100%, 46%);
     font-size: 16px;
-
-
     background-color: black;
-    
     color: whitesmoke;
-
     --boxLen: 5vh;
     --contWidth: 44vh;
     --contHeigt: 88vh;
     --explosiveLen: 10vh;
-
 }
-
 body {
     background-color: var(--orange1);
     overflow: hidden;
+    height: 100dvh;
 }
-
-body * {
-}
-
+body * {}
 .cont {
     width: var(--contWidth);
     height: var(--contHeigt);
@@ -48,88 +33,70 @@ body * {
     padding-top: 40vh;
     border-left: 1px solid black;
     border-right: 1px solid black;
-
 }
-
 header, footer {
-    background-color: rgb(235, 66, 0);
+    background-color: var(--orangeDarker);
     height: 6vh;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 header {
-    border-bottom: 3px solid rgb(0, 0, 0);
-    z-index: 3; 
+    border-bottom: 3px solid black;
+    z-index: 3;
 }
 footer {
     border-top: 3px solid black;
 }
-
 .box {
     height: var(--boxLen);
     width: var(--boxLen);
     background-color: var(--green1);
 }
-
 span:not(main) {
-
     padding: 0 0.5rem;
     border: none;
     font-size: 2rem;
-    text-shadow: 0px 0px 4px  hsl(66, 62%, 46%);
+    text-shadow: 0px 0px 4px hsl(66, 62%, 46%);
     transition: all 0.5s;
     cursor: pointer;
-
 }
-
 .flip {
     transform: rotateX(360deg);
 }
-
 .endPage {
     background-color: red;
     position: absolute;
-    left: 18vw;
-    width: 64vw;
-    top: 18vh;
-    height: 48vh;
+    left: 50%;
+    translate: -50%;
+    width: min(64%, 600px);
+    top: 20%;
+    height: 50%;
     padding: 1rem;
     border-radius: 3rem;
-
-
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
     z-index: 2;
 }
-
 button {
     border: none;
-    padding: 0.5rem 0;
+    padding: 0.75rem 0;
     border-radius: 2rem;
     font-size: 1rem;
     width: 50%;
 }
-
 .explosive {
     width: var(--explosiveLen);
     height: var(--explosiveLen);
-
     border-radius: 50%;
     background-color: red;
     position: relative;
     left: calc((var(--boxLen) - var(--explosiveLen)) / 2);
     bottom: calc((var(--boxLen) + var(--explosiveLen)) / 2);
     z-index: 3;
-
 }
-
-.hide {
+.hidden {
     display: none;
 }
-
-
-
-
