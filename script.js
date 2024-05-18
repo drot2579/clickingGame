@@ -68,7 +68,7 @@ const explosive = {
             {opacity:0.95,scale:75},
             { scale:0,display: "none", opacity: "0.3", },
         ],
-        timing: {duration: 9 * 1000,easing: "ease",fill: "both",},
+        timing: {duration: 7 * 1000,easing: "ease",fill: "both",},
         get target() { return explosive.el },
         animate() {explosive.anim = this.target.animate(this.frames, this.timing)},
     },
