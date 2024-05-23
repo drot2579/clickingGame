@@ -73,6 +73,7 @@ span:not(main) {
     text-shadow: 0px 0px 4px hsl(66, 62%, 46%);
     transition: all 0.5s;
     cursor: pointer;
+    display: inline-block;
 }
 .flip {
     transform: rotateX(360deg);

@@ -37,8 +37,14 @@ const hscore = {
         (level.value > this.value) && (this.value = level.value);
         this.save()
     },
-
 }
+let keys = Array(5)
+document.body.addEventListener("keypress", ({key}) => {
+    keys.push(key)
+    keys.shift()
+    let str = keys.join("")
+    if(str == "reset"){hscore.value = 0; hscore.save();console.log(`Highscore deleted.`);}
+})
 
 // FLIP NUMBERS ANIM
 const flipAnim = {
@@ -59,20 +65,19 @@ const explosive = {
     anim: null,
     animGen: {
         frames: [
-            { scale: 5 },
+            { scale: 5,display:"block",opacity:1 },
             { scale: 2, backgroundColor: "darkred", },
             { scale: 8, backgroundColor: "orange", },
             { scale: 4, backgroundColor: "darkorange", },
             { scale: 150, backgroundColor: "red", opacity:1},
             {opacity:0.98},
-            {opacity:0.95,scale:75},
-            { scale:0,display: "none", opacity: "0.3", },
+            {opacity:0.95,scale:150},
+            { scale:1,display: "none", opacity: "0.3", },
         ],
-        timing: {duration: 7 * 1000,easing: "ease",fill: "both",},
+        timing: {duration: 7 * 1000,easing: "ease",fill:"forwards"},
         get target() { return explosive.el },
         animate() {explosive.anim = this.target.animate(this.frames, this.timing)},
     },
-
 }
 
 const cont = {
@@ -107,7 +112,6 @@ const box = {
                 return this.anim.effect.updateTiming({ duration: newLimit })
             }
         }
-
     },
     resetTime() {
         this.anim.effect.updateTiming({ duration: this.durationDefault })
@@ -120,15 +124,12 @@ const box = {
         }
     },
     ],
-
     addListeners() { for (const lstnr of this.listeners) { this.el.addEventListener(lstnr.type, lstnr.fn) } },
     init() {
         this.animGen.animate()
         this.anim.cancel()
         this.addListeners()
     }
-
-
 }
 const endPage = {
     name: "endPage",
@@ -164,7 +165,7 @@ const game = {
         toggleClass(explosive.el)
         toggleClass(box.el)
         explosive.animGen.animate()
-        const tino = setTimeout(() => toggleClass(endPage.el), explosive.animGen.timing.duration - 6 * 1000)
+        const tino = setTimeout(() => toggleClass(endPage.el), explosive.animGen.timing.duration - 3 * 1000)
 
     },
     again() {
@@ -172,9 +173,7 @@ const game = {
         toggleClass(endPage.el)
         toggleClass(box.el)
         box.resetTime()
-
     },
-
 }
 
 game.init()
